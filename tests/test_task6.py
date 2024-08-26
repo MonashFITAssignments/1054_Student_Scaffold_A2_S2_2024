@@ -7,10 +7,11 @@ from awards import Awards
 from player import Player
 from random_gen import RandomGen
 from season import Season
+from typing import Union
 
 
 class TestTask6(TestCase):
-    def __verify_results(self, expected_results: list[list[str | int | list]]) -> None:
+    def __verify_results(self, expected_results: list[list[Union[str, int, list]]]) -> None:
         for row_no, row in enumerate(self.awards.get_leaderboard()):
             for cell_no, cell in enumerate(row):
                 self.assertEqual(expected_results[row_no][cell_no], cell)
@@ -57,7 +58,7 @@ class TestTask6(TestCase):
         season.simulate_season()
         self.awards: Awards = Awards(season, PlayerStats.GOALS, 3)
 
-        expected_results: list[list[str | int]] = [
+        expected_results: list[list[Union[str, int]]] = [
                    ['Ann Caicedo',   6,   5,   0,   2,   0,   2,   4,  76, 173],
               ['Christian Wright',   6,   3,   2,   1,   2,   5,   5,  89, 180],
                ['Saksham Iniesta',   6,   3,   1,   0,   2,   1,   4,  87, 157],

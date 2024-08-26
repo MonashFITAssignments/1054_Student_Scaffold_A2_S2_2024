@@ -2,6 +2,7 @@ from __future__ import annotations
 from data_structures.referential_array import ArrayR
 from constants import PlayerStats
 from season import Season
+from typing import Union
 
 
 class Awards:
@@ -16,7 +17,7 @@ class Awards:
         """
         raise NotImplementedError
 
-    def get_leaderboard(self) -> ArrayR[ArrayR[int | str]]:
+    def get_leaderboard(self) -> ArrayR[ArrayR[Union[int, str]]]:
         """
         Generates the leaderboard of awards.
 
