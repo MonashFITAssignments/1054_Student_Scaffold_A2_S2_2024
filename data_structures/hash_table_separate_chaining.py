@@ -53,9 +53,16 @@ class HashTableSeparateChaining(Generic[T]):
         :raises KeyError: when the key doesn't exist
         """
         position = self.hash(key)
+        if self.table[position] is None:
+            raise KeyError(key)
+
         for index, item in enumerate(self.table[position]):
             if item[0] == key:
-                self.table[position].delete_at_index(index)
+                if len(self.table[position]) <= 1:
+                    self.table[position] = None
+                else:
+                    self.table[position].delete_at_index(index)
+
                 self.count -= 1
                 return
 
