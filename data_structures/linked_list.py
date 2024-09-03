@@ -92,8 +92,13 @@ class LinkedList(List[T]):
             elif index == 0:
                 item = self.head.item
                 self.head = self.head.link
+                previous_node = self.head
             else:
                 raise ValueError("Index out of bounds")
+
+            if index == len(self) - 1:
+                self.rear = previous_node
+
             self.length -= 1
             return item
         else:
