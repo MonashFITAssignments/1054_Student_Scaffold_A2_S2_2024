@@ -104,17 +104,15 @@ class LinkedList(List[T]):
         if index == 0:
             new_node.link = self.head
             self.head = new_node
-            
-        elif index == len(self):
-            if len(self) == 0:
-                self.rear = new_node
-            else:
-                self.rear.link = new_node
-                self.rear = new_node
         else:
             previous_node = self.__get_node_at_index(index-1)
             new_node.link = previous_node.link
             previous_node.link = new_node
+
+        if index == len(self):
+            if len(self) > 0:
+                self.rear.link = new_node
+            self.rear = new_node
 
         self.length += 1
 
